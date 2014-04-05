@@ -27,7 +27,7 @@
         }
         return sockets[_this.url][_this.uuid] = _this;
       });
-      this.socket.on('select', function(selection) {
+      this.socket.on('select', function(selection, color) {
         var session, _, _ref, _results;
         if (!(_this.url in sockets)) {
           return;
@@ -36,11 +36,11 @@
         _results = [];
         for (_ in _ref) {
           session = _ref[_];
-          _results.push(session.socket.emit('select', selection));
+          _results.push(session.socket.emit('select', selection, color));
         }
         return _results;
       });
-      this.socket.on('note.create', function(selection) {
+      this.socket.on('note.create', function(selection, color) {
         var id, session, _, _ref, _results;
         if (!(_this.url in sockets)) {
           return;
@@ -50,7 +50,7 @@
         _results = [];
         for (_ in _ref) {
           session = _ref[_];
-          _results.push(session.socket.emit('note.create', selection, id));
+          _results.push(session.socket.emit('note.create', selection, color, id));
         }
         return _results;
       });

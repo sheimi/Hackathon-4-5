@@ -21,18 +21,18 @@ class Session
         sockets[@url] = {}
       sockets[@url][@uuid] = @
     
-    @socket.on 'select', (selection) =>
+    @socket.on 'select', (selection, color) =>
       if @url not of sockets
         return
       for _, session of sockets[@url]
-        session.socket.emit 'select', selection
+        session.socket.emit 'select', selection, color
 
-    @socket.on 'note.create', (selection) =>
+    @socket.on 'note.create', (selection, color) =>
       if @url not of sockets
         return
       id = uuid.v4()
       for _, session of sockets[@url]
-        session.socket.emit 'note.create', selection, id
+        session.socket.emit 'note.create', selection, color, id
 
     @socket.on 'note.lock', (id) =>
       if @url not of sockets

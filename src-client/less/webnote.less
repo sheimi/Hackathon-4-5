@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   height: 50px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid #EEE;
   text-align: left;
   padding: 8px;
@@ -22,7 +22,6 @@
 }
 
 .sh-hightlight {
-  background: yellow;
 }
 
 .sh-note {
@@ -30,8 +29,56 @@
   padding: 10px;
   height: 200px;
   width: 200px;
-  background: rgba(185, 219, 235, 0.5);
+  background: rgba(185, 219, 235, 0.6);
   &:hover {
-    background: rgba(185, 219, 235, 0.8);
+    background: rgba(185, 219, 235, 0.9);
   }
+}
+
+[data-bg="yellow"] {
+  background: rgba(255, 255, 161, 0.6);
+  &:hover {
+    background: rgba(255, 255, 161, 0.9);
+  }
+}
+
+[data-bg="red"] {
+  background: rgba(255, 137, 137, 0.6);
+  &:hover {
+    background: rgba(255, 137, 137, 0.9);
+  }
+}
+
+[data-bg="green"] {
+  background: rgba(184, 255, 184, 0.6);
+  &:hover {
+    background: rgba(184, 255, 184, 0.9);
+  }
+}
+
+[data-bg="blue"] {
+  background: rgba(185, 219, 235, 0.6);
+  &:hover {
+    background: rgba(185, 219, 235, 0.9);
+  }
+}
+
+[data-fg="yellow"] {
+  color: yellow;
+}
+
+[data-fg="black"] {
+  color: black;
+}
+
+[data-fg="red"] {
+  color: red;
+}
+
+[data-fg="green"] {
+  color: green;
+}
+
+[data-fg="blue"] {
+  color: blue;
 }
