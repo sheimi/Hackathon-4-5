@@ -1,0 +1,37 @@
+.sh-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #EEE;
+  text-align: left;
+  padding: 8px;
+}
+
+.sh-btn {
+  padding: 5px;
+  height: 34px;
+  border: 1px solid #EEE;
+  background: white;
+  margin: 0 5px;
+  &[data-triggered="true"] {
+    background: #EEE;
+  }
+}
+
+.sh-hightlight {
+  background: yellow;
+}
+
+.sh-note {
+  position: absolute;
+  padding: 10px;
+  height: 200px;
+  width: 200px;
+  background: rgba(185, 219, 235, 0.5);
+  &:hover {
+    background: rgba(185, 219, 235, 0.8);
+  }
+}
