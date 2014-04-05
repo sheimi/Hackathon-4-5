@@ -37,8 +37,25 @@ Array.prototype.compare = function (array) {
       $("#" + id).text(text);
       return $("#" + id).attr('contenteditable', 'true');
     });
-    return socket.on('note.lock', function(id) {
+    socket.on('note.lock', function(id) {
       return $("#" + id).attr('contenteditable', 'false');
+    });
+    return socket.on('history', function(history) {
+      var action, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = history.length; _i < _len; _i++) {
+        action = history[_i];
+        if (action.type === 'select') {
+          _results.push(hight_selection(action.selection, action.color));
+        } else if (action.type === 'note.create') {
+          _results.push(create_note(action.selection, action.color, action.id));
+        } else if (action.type === 'note.edit') {
+          _results.push($("#" + action.id).text(action.text));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     });
   });
 

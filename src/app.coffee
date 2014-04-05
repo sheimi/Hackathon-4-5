@@ -8,6 +8,7 @@ handler = (req, res) ->
   # pass
 
 sockets = {}
+histories = {}
 
 class Session
 
@@ -19,11 +20,19 @@ class Session
       @url = url
       if @url not of sockets
         sockets[@url] = {}
+        histories[@url] = []
       sockets[@url][@uuid] = @
+      @socket.emit 'history', histories[@url]
     
     @socket.on 'select', (selection, color) =>
       if @url not of sockets
         return
+      log =
+        type: 'select'
+        selection: selection
+        color: color
+      histories[@url].push log
+
       for _, session of sockets[@url]
         session.socket.emit 'select', selection, color
 
@@ -31,6 +40,14 @@ class Session
       if @url not of sockets
         return
       id = uuid.v4()
+
+      log =
+        type: 'note.create'
+        selection: selection
+        color: color
+        id: id
+      histories[@url].push log
+
       for _, session of sockets[@url]
         session.socket.emit 'note.create', selection, color, id
 
@@ -44,6 +61,12 @@ class Session
     @socket.on 'note.edit', (text, id) =>
       if @url not of sockets
         return
+      log =
+        type: 'note.edit'
+        text: text
+        id: id
+      histories[@url].push log
+
       for _, session of sockets[@url]
         if session.socket != @socket
           session.socket.emit 'note.edit', text, id

@@ -4,11 +4,11 @@
   "description": "This extension is for webnote",
   "version": "0.0.1",
   "permissions": [
-    "http://blog.sheimi.me/"
+    "http://blog.sheimi.me/*"
   ],
   "content_scripts": [
     {
-      "matches": ["http://blog.sheimi.me/"],
+      "matches": ["http://blog.sheimi.me/*"],
       "js": [
         "content_scripts/jquery-1.11.0.min.js",
         "content_scripts/socket.io.js",

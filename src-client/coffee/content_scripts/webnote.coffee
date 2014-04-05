@@ -37,6 +37,16 @@ socket.on 'connect', () ->
   socket.on 'note.lock', (id) ->
     $("##{id}").attr 'contenteditable', 'false'
 
+  socket.on 'history', (history) ->
+    for action in history
+      if action.type == 'select'
+        hight_selection action.selection, action.color
+      else if action.type == 'note.create'
+        create_note action.selection, action.color, action.id
+      else if action.type == 'note.edit'
+        $("##{action.id}").text action.text
+
+
 option =
   bg: 'yellow'
   fg: 'black'
