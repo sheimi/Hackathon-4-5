@@ -23,7 +23,7 @@ Array.prototype.compare = function (array) {
 }
 ;
 
-  socket = io.connect('http://localhost:8000');
+  socket = io.connect('http://sheimi.me:8000');
 
   socket.on('connect', function() {
     socket.emit('url', location.href);
