@@ -95,6 +95,12 @@ Array.prototype.compare = function (array) {
       id = $(this).attr('id');
       return socket.emit('note.lock', id);
     });
+    $(document).on('keydown', '.sh-note', function(e) {
+      var id, text;
+      id = $(this).attr('id');
+      text = $(this).text();
+      return socket.emit('note.edit', text, id);
+    });
     return $(document).on('focusout', '.sh-note', function(e) {
       var id, text;
       id = $(this).attr('id');

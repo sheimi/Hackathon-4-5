@@ -100,6 +100,11 @@ $(document).ready () ->
     id = $(this).attr 'id'
     socket.emit 'note.lock', id
 
+  $(document).on 'keydown', '.sh-note', (e) ->
+    id = $(this).attr 'id'
+    text = $(this).text()
+    socket.emit 'note.edit', text, id
+
   $(document).on 'focusout', '.sh-note', (e) ->
     id = $(this).attr 'id'
     text = $(this).text()
